@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% block name %}
+    <h1 style="margin-left: 600px;color: black"> 所有新闻 </h1>
+{% endblock %}
+{% block con %}
+    <style>
+        .btn-success {
+            margin-top: 10px;
+        }
+
+        .container {
+            margin-top: 15px;
+            margin-left: 1px;
+        }
+    </style>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 col-md-offset-3">
+                <table class="table table-striped table-bordered">
+                    <thead>
+                    <tr>
+                        <td style="background-color: #c7ddef">新闻id</td>
+                        <td style="background-color: #b2dba1">新闻文本</td>
+                        <td style="background-color: #31b0d5">新闻图像</td>
+                        <td style="background-color: #ebccd1">检测结果</td>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for news in context %}
+                        <tr>
+                            <td >{{ news.id }}</td>
+                            <td>{{ news.text }}</td>
+<!--                            <td> <img src="data:image/png;base64,{{ news.image }}"> </td>-->
+                            <td> <img src="data:image/png;base64,{{ news.image }}"> </td>
+                            <td>{{ news.result }}</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+
+                </table>
+            <button id="export_data" type="button" class="btn btn-primary col-sm-5" style="margin-left: 10px" onclick="export_data()">导出excel</button>
+
+            </div>
+        </div>
+
+    </div>
+{% endblock %}

@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+
+    table {
+        table-layout: fixed;
+        width: 100%;
+        border-collapse: collapse;
+        border: 3px solid purple;
+    }
+
+    thead th:nth-child(1) {
+        width: 10%;
+    }
+
+    thead th:nth-child(2) {
+        width: 70%;
+    }
+
+    thead th:nth-child(3) {
+        width: 10%;
+    }
+
+    thead th:nth-child(4) {
+        width: 10%;
+    }
+
+    th, td {
+        padding: 20px;
+    }
+
+    html {
+        font-family: 'helvetica neue', helvetica, arial, sans-serif;
+    }
+
+    thead th, tfoot th {
+        font-family: 'Rock Salt', cursive;
+    }
+
+    th {
+        letter-spacing: 2px;
+    }
+
+    td {
+        letter-spacing: 1px;
+    }
+
+    tbody td {
+        text-align: center;
+    }
+
+    tfoot th {
+        text-align: right;
+    }
+
+    thead, tfoot {
+        background: url(leopardskin.jpg);
+        color: white;
+        text-shadow: 1px 1px 1px black;
+    }
+
+    thead th, tfoot th, tfoot td {
+        background: linear-gradient(to bottom, rgba(0, 0.3, 0, 0), rgba(0, 0, 0, 0.5));
+        border: 3px solid purple;
+    }
+
+</style>
+<body>
+<form name="pay" method="post" enctype="multipart/form-data">
+    <table>
+        <caption>虚假新闻数据传输观测</caption>
+        <thead>
+        <tr>
+            <th scope="col">News</th>
+            <th scope="col">Content</th>
+            <th scope="col">Size</th>
+            <th scope="col">备注</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <th scope="row">Root Text</th>
+            <td style="color: blue" name="text">{{context.text}}</td>
+            <td>新闻文本</td>
+            <td>Text</td>
+        </tr>
+        <tr>
+            <th scope="row">Text Tensor</th>
+            <td style="color: blue" >{{context.tensor_text}}</td>
+            <td>文本向量</td>
+            <td>text tensor</td>
+        </tr>
+
+        ... data transfer
+
+        <tr>
+            <th scope="row">Mask Tensor</th>
+            <td style="color: blue">{{context.tensor_mask}}</td>
+            <td>隐码向量</td>
+            <td>Mask Tensor</td>
+        </tr>
+        <tr>
+            <th scope="row">Root Image</th>
+            <td style="color: blue; background: lavender">{{context.image}}</td>
+            <td>图像</td>
+            <td>Image</td>
+        </tr>
+        <tr>
+            <th scope="row">Image Tensor</th>
+            <td style="color: blue; background: lavenderblush" name="photo">{{context.tensor_image}}</td>
+            <td>图像向量</td>
+            <td>Image Tensor</td>
+        </tr>
+        </tbody>
+        <tfoot>
+        <tr>
+            <th scope="row" colspan="2">Total albums</th>
+            <td colspan="2">77</td>
+        </tr>
+        </tfoot>
+
+    </table>
+</form>
+</body>
+</html>

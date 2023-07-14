@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>gehong_fake.com</title>
+</head>
+<style>
+</style>
+<body>
+<div id="container">
+
+    <div id="header" style="background-color:#DEAFC3;height: 30px">
+        <h1 style="text-align: center;color:black;font-family: Georgia  ">Fake News Detection</h1></div>
+
+    <div id="menu" style="background-color:#9A78A7;height:800px;width:300px;float:left;">
+        <b style="font-family: Georgia; color: #F9ECFE; font-size: 20px;align-content: center ">Menu</b><br>
+        <b style="font-family: Georgia; color: #F9ECFE;font-size: 20px;text-align: center ">葛红</b><br>
+        <b>努力呀</b><br>
+        <b>美好生活</b>
+    </div>
+
+    <div id="content" style="background-color:#F9ECFE;height:800px;width:1000px;float: left;">
+        <!-- 表单使用 fieldset, legend, 和 label 标签 -->
+        <form name="pay" method="post" enctype="multipart/form-data">
+            <fieldset>
+                <legend style="font-size: 40px;font-family: Georgia"> detection </legend>
+                <label><br>
+                    <b style="font-family: Georgia;font-size: 20px">please input text</b><br>
+                    <input type="text" required="required" placeholder="请输入文本" name="text" size="60" style="font-size: 15px"></input><br><br>
+                    <b style="font-family: Georgia;font-size: 20px">please input image</b><br>
+                    <input type="file" required="required" placeholder="请输入图像" name="photo" id="input_img"
+                           size="60"></input>
+                    <div id="show_img"></div><br>
+                    <button class="but" style="font-size: 15px;background-color: #DEAFC3 ;width: 150px" onclick="zhi()"/>
+                    新闻内容处理</button><br><br>
+                    <button class="but" style="font-size: 15px;background-color: #DEAFC3;width: 150px " onclick="wei()"/>开始检测新闻</button>
+                </label>
+            </fieldset>
+        </form>
+
+        <!--视频-->
+        <div style="text-align:center">
+            <button onclick="playPause()">播放/暂停</button>
+            <button onclick="makeBig()">放大</button>
+            <button onclick="makeSmall()">缩小</button>
+            <button onclick="makeNormal()">普通</button>
+            <br>
+            <video id="video1" width="800">
+                <source src="gongqijun.mp4" type="video/mp4">
+                <source src="mov_bbb.ogg" type="video/ogg">
+                您的浏览器不支持 HTML5 video 标签。
+            </video>
+        </div>
+    </div>
+    <div id="other" style="background-color:#9A78A7;height:800px;width:250px;float:right;">
+        <b style=>菜单</b><br>
+        葛红<br>
+        努力呀<br>
+        美好生活
+    </div>
+    <div id="footer" style="background-color:#DEAFC3;clear:both;text-align:center;">
+        版权 © gehong.com
+    </div>
+
+
+</div>
+<!-- 表单使用scrip 标签 -->
+<script>
+    <!-- 表单使用video 标签 -->
+    var myVideo = document.getElementById("video1");
+
+    function playPause() {
+        if (myVideo.paused)
+            myVideo.play();
+        else
+            myVideo.pause();
+    }
+
+    function makeBig() {
+        myVideo.width = 560;
+    }
+
+    function makeSmall() {
+        myVideo.width = 320;
+    }
+
+    function makeNormal() {
+        myVideo.width = 420;
+    }
+</script>
+<!--图片上传-->
+<script>
+    var getUserPhoto = document.getElementById("input_img");
+    getUserPhoto.onchange = function () {
+        var file = this.files;
+        console.log(file);
+        var reader = new FileReader();
+        reader.readAsDataURL(file[0]);
+        reader.onload = function () {
+            var image = document.createElement("img");
+            image.width = "400";
+            image.src = reader.result;
+            var showPicture = document.getElementById("show_img");
+            showPicture.append(image);
+        };
+    };
+</script>
+<!--登陆链接-->
+<script type="text/javascript">
+    function wei() {
+        document.pay.action = "http://region-3.seetacloud.com:49071/predict";
+        document.pay.submit();
+    }
+
+    function zhi() {
+        document.pay.action = "http://region-3.seetacloud.com:49071/up_photo";
+        document.pay.submit();
+    }
+
+</script>
+
+</body>
+</html>
